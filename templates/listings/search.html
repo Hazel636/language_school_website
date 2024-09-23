@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% block title %} | 搜索语言课程 {% endblock %}
+{% block content %}
+<section id="showcase" class="p-3">
+  <div class="container text-center">
+    <div class="home-search p-3">
+      <div class="overlay p-4 p-md-5">
+          <h1 class="mb-4">
+            搜索全球语言课程
+          </h1>
+          <form action="{% url 'search' %}">
+            <!-- Form Row 1 -->
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">国家</label>
+                <select id="country-select" name="country" class="form-control">
+                    <option selected="true" disabled="disabled">国家</option>
+                    {% for key,value in country_choices.items %}
+                        <option value="{{ key }}"
+                            {% if key == values.country %}
+                                selected
+                            {% endif %}>
+                            {{ value }}
+                        </option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">城市</label>
+                <select id="city-select" name="city" class="form-control">
+                    <option selected="true" disabled="disabled">城市</option>                    
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">课程类别</label>
+                <select name="category" class="form-control">
+                  <option selected="true" disabled="disabled">课程类别</option>
+                  {% for key,value in category_choices.items %}
+                    <option value="{{ key }}"
+                        {% if key == values.category %}
+                            selected
+                        {% endif %}>
+                        {{ value }}
+                    </option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="sr-only">价格上限</label>
+                <select name="price" class="form-control">
+                  <option selected="true" disabled="disabled">价格上限</option>
+                  {% for key,value in price_choices.items %}
+                    <option value="{{ key }}"
+                        {% if key == values.price %}
+                            selected
+                        {% endif %}>
+                        {{ value }}
+                    </option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="sr-only">Keywords</label>
+                <input type="text" name="keywords" class="form-control" placeholder="关键词..." value="{{ values.keywords }}">
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block mt-md-1" type="submit">发 起 搜 索</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-4">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="index.html">
+              <i class="fas fa-home"></i> 首页</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="listings.html">课程</a>
+          </li>
+          <li class="breadcrumb-item active">搜索结果</li>
+        </ol>
+      </nav>
+    </div>
+</section>
+
+<!-- Listings -->
+<section id="listings" class="py-2">
+    <div class="container">
+      <div class="row">
+
+        {% if listings %}
+            {% for listing in listings %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card listing-preview">
+                  <img class="card-img-top" src="{{listing.school.photo_main.url}}" alt="">
+                  <div class="card-img-overlay">
+                    <h2>
+                      <span class="badge badge-secondary text-white">¥{{ listing.price}} / 周</span>
+                    </h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="listing-heading text-center">
+                      <h4 class="text-primary">{{ listing.title }}</h4>
+                      <p>
+                        <i class="fas fa-map-marker text-secondary"></i> {{ listing.school}}, {{ listing.school.city}}</p>
+                    </div>
+                    <hr>
+                    <div class="row py-2 text-secondary">
+                      <div class="col-6">
+                        <i class="fas fa-clock"></i> 课时: {{ listing.hourperweek }} / 周</div>
+                      <div class="col-6">
+                        <i class="fas fa-user"></i> 班级人数: {{ listing.studentnumber }}</div>
+                    </div>
+                    <hr>
+                    <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-md-12">
+                <p>No Listings Available</p>
+            </div>
+        {% endif %}
+
+
+      </div>
+    </div>
+</section>
+
+{% endblock %}

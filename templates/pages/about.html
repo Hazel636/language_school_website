@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %} | 关于加拿大游学 {% endblock %}
+{% load static %}
+{% block content %}
+    <section id="showcase-inner" class="py-4 py-md-5 text-white">
+        <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="mt-3">短期游学 你的度假新方式</h1>
+                <p class="lead mt-1 mt-4">我们提供最具性价比的游学项目 让游学不再是富裕家庭的专属奢侈品</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-md-4 mt-4">
+        <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'index' %}">
+                <i class="fas fa-home"></i> 首页</a>
+            </li>
+            <li class="breadcrumb-item active">关于</li>
+            </ol>
+        </nav>
+        </div>
+    </section>
+    
+    <!--Alert-->
+    {% include 'partials/_alerts.html' %}
+
+    <section id="about" class="py-2">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+            <h2>沉浸式英文环境，探索型异国假期！</h2>
+            <p class="mt-4">短期游学是当下最独特的度假方式之一，不论是求学的青少年，还是上升期的白领，都可以通过短期游学让自己的假期更有意义。为让更多人体验到这一独特的度假方式，我们精心挑选全球范围内最具性价比的游学项目，让游学不再是富裕家庭的专属选择。无论您是想短暂体验海外生活，还是希望在纯正的语言环境中提升英语能力，我们的项目都能满足您的需求。</p>
+            <img src="{% static 'img/indexshowcase.jpg' %}" alt="">
+            <p class="mt-4">游学项目通常为期2-8周，包括4-7小时的英语课堂时间和自由观光时间，学生们会寄宿在当地居民家中，深入体验最原汁原味的当地文化。这种安排不仅大幅降低了游学成本，同时为学生提供了更加真实的文化体验。当然，我们也提供多样化的住宿选择，如学生宿舍和高级公寓等，以满足不同预算和偏好的需求。</p>
+            <p class="mt-4">我们与多家国际知名教育机构合作，所有英语课程均由母语为英语的专业教师授课，涵盖通用英语、考试准备英语、商务英语等多种类别。入学时，学生将接受英语水平测试，并根据测试结果分配到相应级别的班级。同时，学校将不同语言背景的学生分在同一班级，确保最佳的语言学习环境。</p>
+            <p class="mt-4">如果您有更多的疑问，请在页面右侧的咨询栏提出您的问题，我们将会有专人在24小时内为您答疑解惑。</p>
+        </div>
+            <div class="col-md-3 p-3">
+                <div class="card mb-3">
+                    <img class="card-img-top" src="{% static 'img/customer_service.jpg' %}" alt="1对1客服">
+                    <div class="card-body">
+                        <h5 class="card-title">1对1客服</h5>
+                        <h5 class="text-secondary">凯文</h5>
+                        <p class="card-text">我会细心倾听您的需求 提供最贴心的服务
+                        </p>
+                    </div>
+                </div>
+                <button class="btn-secondary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">咨 询</button>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Inquiry Modal -->
+    {% include 'partials/_inquiryModal.html' %}
+
+{% endblock%}

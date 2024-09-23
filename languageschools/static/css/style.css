@@ -1,0 +1,156 @@
+
+.btn-secondary {
+  color: #fff !important; }
+
+img {
+  width: 100%; }
+
+.logo {
+  width: 80px; }
+
+.navbar {
+  opacity: 0.9;
+  text-transform: uppercase; }
+
+.social a {
+  margin-right: 0.4rem; }
+
+.customer {
+  border-radius: 5px;
+  font-size: 1.25rem;
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  width: min(200px,40vw);
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+  overflow: hidden;
+}
+
+#showcase {
+  background: url(../img/indexshowcase_1.jpg) no-repeat top center /cover !important; /*这里去掉了fixed, 加了important*/
+  position: relative;
+  color: #fff;
+  }
+  
+  #showcase .home-search {
+    padding-top: 0rem;
+    position: relative;
+    border-radius: 5px; }
+  #showcase .overlay {
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(51, 51, 51, 0.8); }
+
+#services {
+  background: url(../img/indexshowcase_1.jpg) no-repeat top center /cover !important; /*这里去掉了fixed, 加了important*/
+  min-height: 300px;
+  position: relative;
+  overflow: hidden; }
+  #services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(32, 134, 107, 0.8); }
+
+#showcase-inner {
+  background: url(../img/indexshowcase_1.jpg) no-repeat top center /cover !important; /*这里去掉了fixed, 加了important*/
+  position: relative;
+  overflow: hidden;
+  min-height: 250px; }
+  #showcase-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(32, 134, 107, 0.8); }
+  #showcase-inner.showcase-search {
+    min-height: 270px; }
+
+    
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 居中显示 */
+  color: white;
+  font-size: 3rem;/*上次从2改为4*/
+  font-weight: bold;
+  text-align: center;
+  z-index: 1; /* 确保文本在图片上方 */
+}
+.test{
+  position: fixed;
+  z-index: 1050;
+  bottom: 2%;
+  right: 2%;
+  overflow: hidden;
+  width: min(200px,40vw);
+  max-width: 100vw;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#work {
+  padding: 6rem 0; }
+
+.listing-preview a {
+  position: relative; }
+
+@media (max-width: 991px) {
+  #showcase {
+    padding-top: 4rem; }
+    #showcase h1 {
+      font-size: 40px; }
+  .hide-md-down {
+    display: none; } }
+
+@media (max-width: 768px) {
+  .customer {
+    border-radius: 5px;
+    font-size: 1rem;
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    width: min(200px,40vw);
+    max-width: 100vw;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1050;
+    overflow: hidden;
+  .card-img-top{
+    height: 50%;
+    overflow: hidden;
+  }
+  }
+  .btn-secondary {
+    font-size: 1rem;
+  }
+  #showcase {
+    padding-top: 3rem; }
+    #showcase h1 {
+      font-size: 40px; }
+    #showcase p {
+      display: none; }
+  #top-bar {
+    text-align: center; }
+    #top-bar .social {
+      text-align: center !important; } }
+
+@media (max-width: 576px) {
+  #showcase h1 {
+    font-size: 30px; }
+  #showcase-inner {
+    min-height: 100px;}
+  #showcase-inner h1 {
+    font-size: 28px; }
+  #showcase-inner p {
+    font-size: 16px; }
+     }

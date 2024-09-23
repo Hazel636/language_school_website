@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block title %} | {{listing.title}} {% endblock %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-md-4 mt-4">
+        <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'index' %}">
+                    <i class="fas fa-home"></i> 首页</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'listings' %}">课程</a>
+            </li>
+            <li class="breadcrumb-item active">{{ listing.school.name }} {{ listing.title }}</li>
+            </ol>
+        </nav>
+        </div>
+    </section>
+
+    
+    <!--Alert-->
+    {% include 'partials/_alerts.html' %}
+    
+    <!-- Listing -->
+    <section id="listing" class="py-2">
+        <div class="container">
+        <a href="{% url 'listings' %}" class="btn btn-light mb-4">返回 课程列表</a>
+        <div class="row">
+            <div class="col-md-9">
+                <div id="schoolCarousel" class="carousel slide" data-ride="carousel" data-interval="1500">
+                    <div class="carousel-inner">
+                        {% if listing.school.photo_main %}
+                        <div class="carousel-item active">
+                            <img src="{{ listing.school.photo_main.url }}" class="d-block w-100" alt="Main Photo">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_1 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_1.url }}" class="d-block w-100" alt="Photo 1">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_2 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_2.url }}" class="d-block w-100" alt="Photo 2">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_3 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_3.url }}" class="d-block w-100" alt="Photo 3">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_4 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_4.url }}" class="d-block w-100" alt="Photo 4">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_5 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_5.url }}" class="d-block w-100" alt="Photo 5">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_6 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_6.url }}" class="d-block w-100" alt="Photo 6">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_7 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_7.url }}" class="d-block w-100" alt="Photo 7">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_8 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_8.url }}" class="d-block w-100" alt="Photo 8">
+                        </div>
+                        {% endif %}
+                        {% if listing.school.photo_9 %}
+                        <div class="carousel-item">
+                            <img src="{{ listing.school.photo_9.url }}" class="d-block w-100" alt="Photo 9">
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="row mb-3 fields">
+                    <a class="carousel-control-prev" href="#schoolCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        
+                    </a>
+                    <a class="carousel-control-next" href="#schoolCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        
+                    </a>
+                    </div>
+                </div>
+                <!-- Fields -->
+                    <div class="row mb-5 fields">
+                        <!--fields-->
+                        <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item text-secondary">
+                            <i class="fas fa-yen-sign"></i> 每周价格:
+                            <span class="float-right">¥{{ listing.price }}</span>
+                            </li>
+                            <li class="list-group-item text-secondary">
+                            <i class="fas fa-clock"></i> 每周课时:
+                            <span class="float-right">{{ listing.hourperweek }}</span>
+                            </li>
+                            <li class="list-group-item text-secondary">
+                        </ul>
+                        </div>
+                        <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item text-secondary">
+                                <i class="fas fa-users"></i> 班级人数:
+                                <span class="float-right">{{ listing.studentnumber }}</span>
+                            </li>
+                            <li class="list-group-item text-secondary">
+                                <i class="fas fa-user-tie"></i> 年龄限制:
+                                <span class="float-right">{{ listing.agerange }}
+                                </span>
+                            </li>
+                            <li class="list-group-item text-secondary">
+                        </ul>
+                        </div>
+                        
+                        <!-- Description -->
+                        <div class="col-md-12">
+                            {{ listing.description}}
+                        </div>
+                        
+                        <div class="accordion my-5" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button bg-secondary text-white" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                    住宿选择
+                                </button>
+                              </h2>
+                              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                                {% if listing.accommodation_options.all %}
+                                    {% for option in listing.accommodation_options.all %}
+                                        <div class="accordion-body">
+                                            <i class="fas fa-home"></i>
+                                            <span>{{ option }} / 周</span>       
+                                        </div>                          
+                                    {% endfor %}
+                                {% else %}
+                                        <div class="col-md-12">
+                                            <p>暂无住宿选项</p>
+                                        </div>
+                                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+                        <div class="d-flex justify-content-center" ><a href="{% url 'school' listing.school.id %}" class="btn btn-secondary px-5">查看 {{listing.school.name}} 学校</a></div>
+                    </div>
+            </div>
+            <!-- Inquiry -->
+            {% include 'partials/_inquiry.html' %}
+            
+        </div>
+        </div>
+    </section>
+
+    <!-- Inquiry Modal -->
+    {% include 'partials/_inquiryModal.html' %}
+    
+{% endblock %}

@@ -1,0 +1,40 @@
+<div class="modal fade" id="inquiryModal" role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="inquiryModalLabel">咨 询</h5>
+            <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'contact' %}" method="POST">
+                    {% csrf_token %}
+                        <div>
+                        <input type="hidden" name="listing" value="indexPage">
+                        <input type="hidden" name="listing_id" value="0">
+                        <input type="hidden" name="email" value="no email">
+                        </div>
+                        <div class="pb-1 pb-md-2">
+                        <label for="name" class="col-form-label">您的姓名:</label>
+                        <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="pb-1 pb-md-2">
+                        <label for="phone" class="col-form-label">您的手机号:</label>
+                        <input type="text" name="phone" class="form-control" required>
+                        </div>
+                        <div class="pb-1 pb-md-2">
+                            <label for="email" class="col-form-label">您的微信号(选填):</label>
+                            <input type="text" name="wechat" class="form-control">
+                        </div>
+                        <div class="pb-1 pb-md-2">
+                        <label for="message" class="col-form-label">咨询内容(选填):</label>
+                        <textarea name="message" class="form-control"></textarea>
+                        </div>
+                        <div class="pt-2 pb-3">我们将于24小时内回复您的咨询</div>
+                        <input type="submit" value="发 送" class="btn btn-block btn-secondary">
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>    

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %} | 加拿大语言课程列表 {% endblock %}
+{% block content %}
+
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-md-4 mt-4">
+    <div class="container pt-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> 首页</a>
+          </li>
+          <li class="breadcrumb-item active">{{ headline.title }}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+
+  <!-- Listings -->
+  <section id="listings" class="py-2">
+    <div class="container">
+      <div class="row">
+        {% if headline %}
+            <div class="bg-secondary mb-3">
+              <div class="col-md-12 p-4 text-white">
+                  <h2>{{ headline.title }}</h2>
+                  <p class="lead">{{ headline.description }}</p>
+              </div>
+            </div>
+            {% for listing in listings %}
+            <div class="row mt-4">
+              <div class="col-md-4 mb-4">
+                <div class="card listing-preview">
+                  <img class="card-img-top" src="{{listing.school.photo_main.url}}" alt="">
+                  <div class="card-img-overlay">
+                    <h2>
+                      <span class="badge badge-secondary text-white">¥{{ listing.price}} / 周</span>
+                    </h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="listing-heading text-center">
+                      <h4 class="text-primary">{{ listing.title }}</h4>
+                      <p>
+                        <i class="fas fa-map-marker text-secondary"></i> {{ listing.school}}, {{ listing.school.city}}</p>
+                    </div>
+                    <hr>
+                    <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <p class="lead">{{ listing.description }}</p>
+              </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-md-12">
+                <p>No Listings Available</p>
+            </div>
+        {% endif %}
+ 
+
+      </div>
+
+      
+    </div>
+</section>
+{% endblock %}
